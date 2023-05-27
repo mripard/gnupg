@@ -10,10 +10,11 @@ if [ -x "${SWTPM}" ]; then
 
     ${SWTPM} socket \
            --tpm2 \
+           --daemon \
            --pid file=${PIDFILE} \
            --server type=tcp,port=2321 \
            --ctrl type=tcp,port=2322 \
-           --tpmstate dir=${DIR} &
+           --tpmstate dir=${DIR}
 
     pid=$(cat ${PIDFILE})
 else
