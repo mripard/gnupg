@@ -2,12 +2,15 @@
 
 # remove any prior TPM contents
 rm -f NVChip h*.bin *.permall
+
+DIR=$(mktemp -d)
+
 if [ -x "${SWTPM}" ]; then
     ${SWTPM} socket \
            --tpm2 \
            --server type=tcp,port=2321 \
            --ctrl type=tcp,port=2322 \
-           --tpmstate dir=`pwd` &
+           --tpmstate dir=${DIR} &
 else
     ${TPMSERVER} > /dev/null 2>&1  &
 fi
