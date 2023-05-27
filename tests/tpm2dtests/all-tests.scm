@@ -31,8 +31,8 @@
     (test::scm
      #f
      #f
-     (path-join "tests" "openpgp" "setup.scm")
-     (in-srcdir "tests" "openpgp" "setup.scm"))))
+     (path-join "tests" "tpm2dtests" "setup.scm")
+     (in-srcdir "tests" "tpm2dtests" "setup.scm"))))
 
  (define (qualify path variant)
    (string-append "<" variant ">" path))
@@ -42,8 +42,8 @@
     (test::scm
      #f
      variant
-     (path-join "tests" "openpgp" "setup.scm")
-     (in-srcdir "tests" "openpgp" "setup.scm")
+     (path-join "tests" "tpm2dtests" "setup.scm")
+     (in-srcdir "tests" "tpm2dtests" "setup.scm")
      (string-append "--" variant))))
 
  (define setup-use-keyring (setup* "use-keyring"))
