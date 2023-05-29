@@ -6,15 +6,20 @@ rm -f NVChip h*.bin *.permall
 DIR=$(mktemp -d)
 
 if [ -x "${SWTPM}" ]; then
+    PIDFILE=${DIR}/swtpm.pid
+
     ${SWTPM} socket \
            --tpm2 \
+           --pid file=${PIDFILE} \
            --server type=tcp,port=2321 \
            --ctrl type=tcp,port=2322 \
            --tpmstate dir=${DIR} &
+
+    pid=$(cat ${PIDFILE})
 else
     ${TPMSERVER} > /dev/null 2>&1  &
+    pid=$!
 fi
-pid=$!
 ##
 # This powers on the tpm and starts it
 # then we derive the RSA version of the storage seed and
