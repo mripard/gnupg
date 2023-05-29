@@ -41,6 +41,10 @@ TESTS_ENVIRONMENT = LC_ALL=C \
 	GNUPG_IN_TEST_SUITE=fact \
 	GPGSCM_PATH="$(abs_top_srcdir)/tests/gpgscm"
 
+if HAVE_SWTPM
+TESTS_ENVIRONMENT += TPM2TOOLS_TCTI="swtpm:host=localhost,port=2321"
+endif
+
 XTESTS = \
 	rsa.scm \
 	ecc.scm \
