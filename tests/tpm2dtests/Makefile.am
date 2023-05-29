@@ -34,6 +34,8 @@ TESTS_ENVIRONMENT = LC_ALL=C \
 	PATH="../gpgscm:$(PATH)" \
 	abs_top_srcdir="$(abs_top_srcdir)" \
 	objdir="$(abs_top_builddir)" \
+	TSS2_LOG=all+DEBUG \
+	TSS2_LOGFILE=tss2.log \
 	TPMSERVER="$(TPMSERVER)" \
 	SWTPM="$(SWTPM)" \
 	SWTPM_IOCTL="$(SWTPM_IOCTL)" \
